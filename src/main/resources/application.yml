@@ -1,0 +1,20 @@
+server:
+    port: 8761
+
+eureka:
+    instance:
+        hostname: localhost
+        prefer-ip-address: false
+        securePort: ${server.port}
+        securePortEnabled: false
+        nonSecurePortEnabled: true
+        metadataMap.hostname: ${eureka.instance.hostname}
+        metadataMap.nonsecurePort: ${server.port}
+        #metadataMap.securePort: ${server.port}
+        homePageUrl: http://${eureka.instance.hostname}:${server.port}/
+        statusPageUrl: http://${eureka.instance.hostname}:${server.port}/admin/info
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+    serviceUrl:
+        defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
